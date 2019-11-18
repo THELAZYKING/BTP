@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title> BTP DashBoard</title> 
+        <link href="style.css" rel="stylesheet" type="text/css" >
+    </head>
+<body><div class="bg"></div>
+<div class="container">
+    <nav>
+        <div class="search-box">
+            <div><i class="fa fa-search"></i><input type="search" placeholder="Search" /></div>
+        </div>
+        <ul class="menu">
+            <li><i class="fa fa-home"></i>Home</li>
+            <li><a id="message"><i class="fa fa-envelope"></i>Messages</a></li>
+            <li><a id="mapper"><i class="fa fa-map-marker"></i>Map</a></li>
+            <li><a id="act"><i class = "fa fa-group"></i> Activity</a></li>
+            <li><i class="fa fa-cog"></i>Settings</li>
+        </ul>
+    </nav>
+    <div class="header">
+        <div class="userPanel">
+            <div class="pic"></div>
+            <div class="welcome"><span>Welcome</span><span class="name">Bhaskar Mishra</span></div>
+        </div>
+        <div class="title"></div>
+        
+    </div>
+     <div class = "material">
+         <div class="content-map" id = "Map1">
+            <div id = "gmap"> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14227.239434434912!2d75.91794403139251!3d26.941241729843274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dba21e8a1d1c9%3A0x5ab565cce4d44c2b!2sThe%20LNM%20Institute%20of%20Information%20Technology!5e0!3m2!1sen!2sin!4v1573635562336!5m2!1sen!2sin" width="700px" height="400px" frameborder="20" style="border:0;"></iframe>
+        </div>
+           <div id = "map-text">
+               <h1><strong>Location</strong> :  Jaipur</h1>
+               <h3> Latitude : 75.9235° E </h3>
+               <h3> Longitude : 26.9363° N </h3>
+               <h3> 20 KM to Destination </h3>
+               <h3> 17 mins to reach the destination</h3>
+           </div> 
+        </div> 
+
+
+        <div class="content-cam" id = "Cam1">
+            <div class = "cam-text">
+                    <h3>Speed</h3>
+                    <h1>30 Km/hr</h1>
+                </div>
+            <div id = "wcam"> 
+                    <video autoplay="true" id="videoElement">
+     
+                        </video>
+        </div>
+        <div class = "cam-text">
+                <h3> Torque</h3>
+                <h1>3000 rpm</h1>
+            </div>
+    </div> 
+
+   <div class="content-message" id = "Mess1">
+                <div id="content-chat">
+                        <div id="chat-window">
+                          <div id="output"></div>
+                          <div id="feedback"></div>
+                        </div>
+                        <input id="message" type="text" placeholder="Message" />
+                        <button id="send">Send</button>
+                      </div>
+        </div>
+        </div>  
+    
+</div> 
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script>
+        (function() {
+          $("ul.menu li").click(function() {
+            $("ul.menu li").removeClass('active');
+            return $(this).addClass('active');
+          });
+        
+        }).call(this);</script>
+<script>
+        var video = document.querySelector("#videoElement");
+        
+       if (navigator.mediaDevices.getUserMedia) {       
+           navigator.mediaDevices.getUserMedia({video: true})
+         .then(function(stream) {
+           video.srcObject = stream;
+         })
+         .catch(function(err0r) {
+           console.log("Something went wrong!");
+         });
+       }
+       
+   </script> 
+   <script>
+      $("#act").click(function(){
+          $("#Map1").removeAttr("style").hide();
+          $("#Mess1").removeAttr("style").hide();
+          $("#Cam1").show();
+      })
+
+      $("#mapper").click(function(){
+          $("#Cam1").removeAttr("style").hide();
+          $("#Mess1").removeAttr("style").hide();
+          $("#Map1").show();
+      })
+
+      $("#message").click(function(){
+        $("#Map1").removeAttr("style").hide();
+        $("#Cam1").removeAttr("style").hide();
+        $("#Mess1").show();
+      })
+       
+       
+    </script> 
+</body>
+</html>
